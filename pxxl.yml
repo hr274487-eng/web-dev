@@ -1,3 +1,5 @@
 rootDirectory: server
+type: nodejs
 buildCommand: npm install
 startCommand: npm start
+engine: nodejs
