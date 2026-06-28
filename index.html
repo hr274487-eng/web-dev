@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>IronForge Gym — Train Hard. Live Strong.</title>
+</head>
+<body>
+    <nav class="navbar">
+        <div class="container nav-inner">
+            <a href="#" class="logo">IRON<span>FORGE</span></a>
+            <button class="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#apply">Apply</a></li>
+                <li><a href="#plans">Plans</a></li>
+                <li><a href="#admission">Admission</a></li>
+                <li><a href="#fees">Fees</a></li>
+                <li><a href="admin.html" class="nav-admin">Admin</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header id="home" class="hero">
+        <div class="hero-overlay"></div>
+        <div class="container hero-content">
+            <p class="hero-tag">Premium Fitness Center</p>
+            <h1>Forge Your<br><span>Best Self</span></h1>
+            <p class="hero-desc">State-of-the-art equipment, expert trainers, and flexible membership plans designed for every fitness goal.</p>
+            <div class="hero-actions">
+                <a href="#plans" class="btn btn-primary">View Plans</a>
+                <a href="#apply" class="btn btn-outline">Join Now</a>
+            </div>
+            <div class="hero-stats">
+                <div class="stat">
+                    <strong>500+</strong>
+                    <span>Active Members</span>
+                </div>
+                <div class="stat">
+                    <strong>24/7</strong>
+                    <span>Gym Access</span>
+                </div>
+                <div class="stat">
+                    <strong>15+</strong>
+                    <span>Expert Trainers</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="apply" class="section section-accent apply-section-top">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Join Us</span>
+                <h2>Membership Application</h2>
+                <p>Pay the fee using one of our payment platforms below, upload your receipt, and submit your application.</p>
+            </div>
+            <div class="apply-grid">
+                <div class="apply-side">
+                    <div class="apply-info">
+                        <h3>Why Join IronForge?</h3>
+                        <ul class="apply-benefits">
+                            <li>Free fitness assessment on joining</li>
+                            <li>Personalized workout plan</li>
+                            <li>Access to all group classes</li>
+                        </ul>
+                    </div>
+                    <div class="payment-methods-block">
+                        <h3>Payment Platforms</h3>
+                        <p class="payment-hint">Send your fee to any account below, then upload the payment screenshot in the form.</p>
+                        <div id="payment-methods-list" class="payment-methods-list"></div>
+                    </div>
+                </div>
+                <form id="apply-form" class="apply-form" enctype="multipart/form-data">
+                    <h3>Application Form</h3>
+                    <div class="form-group">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" name="name" required placeholder="John Doe">
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" name="email" required placeholder="john@email.com">
+                        </div>
+                        <div class="form-group">
+                            <label for="phone">Phone</label>
+                            <input type="tel" id="phone" name="phone" required placeholder="+92 300 0000000">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="plan">Select Plan</label>
+                        <select id="plan" name="plan" required></select>
+                    </div>
+                    <div class="form-group">
+                        <label for="paymentMethodId">Payment Platform Used</label>
+                        <select id="paymentMethodId" name="paymentMethodId" required>
+                            <option value="">Select platform you paid through</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="receipt">Fee Receipt Screenshot</label>
+                        <div class="file-upload">
+                            <input type="file" id="receipt" name="receipt" accept="image/*" required>
+                            <label for="receipt" class="file-upload-label">
+                                <span class="file-upload-text">Choose screenshot (PNG, JPG — max 5 MB)</span>
+                            </label>
+                        </div>
+                        <img id="receipt-preview" class="receipt-preview" hidden alt="Receipt preview">
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message (optional)</label>
+                        <textarea id="message" name="message" rows="3" placeholder="Transaction ID or any notes..."></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-full">Submit Application</button>
+                    <p id="form-status" class="form-status" hidden></p>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="plans" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Membership</span>
+                <h2>Our Plans</h2>
+                <p>Choose the plan that fits your lifestyle and fitness goals.</p>
+            </div>
+            <div id="plans-grid" class="plans-grid"></div>
+        </div>
+    </section>
+
+    <section id="admission" class="section section-dark">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Get Started</span>
+                <h2>Admission Procedure</h2>
+                <p>Follow these simple steps to become a member of IronForge Gym.</p>
+            </div>
+            <div id="admission-steps" class="steps-timeline"></div>
+        </div>
+    </section>
+
+    <section id="fees" class="section">
+        <div class="container">
+            <div class="section-header">
+                <span class="section-tag">Pricing</span>
+                <h2>Fee Structure</h2>
+                <p>Transparent pricing with no hidden charges.</p>
+            </div>
+            <div class="fees-wrapper">
+                <table class="fees-table">
+                    <thead>
+                        <tr>
+                            <th>Fee Item</th>
+                            <th>Amount</th>
+                            <th>Notes</th>
+                        </tr>
+                    </thead>
+                    <tbody id="fees-body"></tbody>
+                </table>
+            </div>
+        </div>
+    </section>
+
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div class="footer-brand">
+                <a href="#" class="logo">IRON<span>FORGE</span></a>
+                <p>Train hard. Live strong. Your fitness journey starts here.</p>
+            </div>
+            <div class="footer-links">
+                <h4>Quick Links</h4>
+                <a href="#plans">Plans</a>
+                <a href="#admission">Admission</a>
+                <a href="#fees">Fees</a>
+                <a href="#apply">Apply</a>
+            </div>
+            <div class="footer-contact">
+                <h4>Contact</h4>
+                <p>123 Fitness Street, City</p>
+                <p>info@ironforgegym.com</p>
+                <p>+92 300 1234567</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <div class="container">
+                <p>&copy; 2026 IronForge Gym. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="Scripts.js"></script>
+</body>
+</html>

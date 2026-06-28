@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <title>Admin Panel — IronForge Gym</title>
+</head>
+<body class="admin-body">
+    <div id="login-screen" class="login-screen">
+        <div class="login-card">
+            <a href="index.html" class="logo">IRON<span>FORGE</span></a>
+            <h2>Admin Panel</h2>
+            <p>Sign in to manage plans, fees, and applications.</p>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" required placeholder="Enter admin password">
+                </div>
+                <button type="submit" class="btn btn-primary btn-full">Sign In</button>
+                <p id="login-error" class="form-status error" hidden>Incorrect password.</p>
+            </form>
+            <p class="login-hint">Default password: <code>admin123</code></p>
+            <a href="index.html" class="back-link">&larr; Back to website</a>
+        </div>
+    </div>
+
+    <div id="admin-panel" class="admin-panel" hidden>
+        <aside class="admin-sidebar">
+            <a href="index.html" class="logo">IRON<span>FORGE</span></a>
+            <p class="sidebar-label">Admin Panel</p>
+            <nav class="admin-nav">
+                <button class="admin-nav-btn active" data-tab="plans">Plans</button>
+                <button class="admin-nav-btn" data-tab="fees">Fee Structure</button>
+                <button class="admin-nav-btn" data-tab="admission">Admission Steps</button>
+                <button class="admin-nav-btn" data-tab="payments">Payment Methods</button>
+                <button class="admin-nav-btn" data-tab="applications">Applications</button>
+                <button class="admin-nav-btn" data-tab="members">Current Members</button>
+                <button class="admin-nav-btn" data-tab="settings">Settings</button>
+            </nav>
+            <button id="logout-btn" class="btn btn-outline btn-full">Logout</button>
+        </aside>
+
+        <main class="admin-main">
+            <header class="admin-header">
+                <h1 id="admin-title">Manage Plans</h1>
+                <a href="index.html" class="btn btn-outline btn-sm">View Site</a>
+            </header>
+
+            <section id="tab-plans" class="admin-tab active">
+                <div class="admin-toolbar">
+                    <p>Manage membership plans shown on the website.</p>
+                    <button id="add-plan-btn" class="btn btn-primary btn-sm">+ Add Plan</button>
+                </div>
+                <div id="admin-plans-list" class="admin-cards"></div>
+            </section>
+
+            <section id="tab-fees" class="admin-tab">
+                <div class="admin-toolbar">
+                    <p>Manage fee structure and charges.</p>
+                    <button id="add-fee-btn" class="btn btn-primary btn-sm">+ Add Fee</button>
+                </div>
+                <div id="admin-fees-list" class="admin-table-wrap"></div>
+            </section>
+
+            <section id="tab-admission" class="admin-tab">
+                <div class="admin-toolbar">
+                    <p>Manage admission procedure steps.</p>
+                    <button id="add-step-btn" class="btn btn-primary btn-sm">+ Add Step</button>
+                </div>
+                <div id="admin-steps-list" class="admin-cards"></div>
+            </section>
+
+            <section id="tab-payments" class="admin-tab">
+                <div class="admin-toolbar">
+                    <p>Manage payment platforms shown on the application form (JazzCash, EasyPaisa, bank accounts, etc.).</p>
+                    <button id="add-payment-btn" class="btn btn-primary btn-sm">+ Add Payment Method</button>
+                </div>
+                <div id="admin-payments-list" class="admin-table-wrap"></div>
+            </section>
+
+            <section id="tab-applications" class="admin-tab">
+                <div class="admin-toolbar">
+                    <p>Review applications and verify fee receipts before approving or rejecting.</p>
+                    <span id="app-count" class="badge">0 applications</span>
+                </div>
+                <div id="admin-applications-list" class="admin-table-wrap"></div>
+            </section>
+
+            <section id="tab-members" class="admin-tab">
+                <div class="admin-toolbar">
+                    <p>Members who have been approved and are currently joining the gym.</p>
+                    <span id="member-count" class="badge">0 active members</span>
+                </div>
+                <div id="admin-members-list" class="admin-table-wrap"></div>
+            </section>
+
+            <section id="tab-settings" class="admin-tab">
+                <div class="settings-card">
+                    <h3>Change Admin Password</h3>
+                    <form id="password-form">
+                        <div class="form-group">
+                            <label for="new-password">New Password</label>
+                            <input type="password" id="new-password" required minlength="6" placeholder="Minimum 6 characters">
+                        </div>
+                        <div class="form-group">
+                            <label for="confirm-password">Confirm Password</label>
+                            <input type="password" id="confirm-password" required placeholder="Re-enter password">
+                        </div>
+                        <button type="submit" class="btn btn-primary">Update Password</button>
+                        <p id="password-status" class="form-status" hidden></p>
+                    </form>
+                </div>
+                <div class="settings-card danger-zone">
+                    <h3>Reset Data</h3>
+                    <p>Restore all plans, fees, and admission steps to default values. Applications and members in the database are not affected.</p>
+                    <button id="reset-data-btn" class="btn btn-danger">Reset to Defaults</button>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <div id="modal" class="modal" hidden>
+        <div class="modal-backdrop"></div>
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">Edit</h3>
+                <button class="modal-close" aria-label="Close">&times;</button>
+            </div>
+            <form id="modal-form"></form>
+        </div>
+    </div>
+
+    <script src="Scripts.js"></script>
+    <script src="admin.js"></script>
+</body>
+</html>
